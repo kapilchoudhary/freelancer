@@ -1,2 +1,27 @@
-<h1>Profile#edit</h1>
-<p>Find me in app/views/profile/edit.html.erb</p>
+<h3> Hello <%= @profile.email%> </h3>
+<h6> Please Update your Profile </h6>
+
+<%= form_with(model: @profile, url: profile_update_path(@profile.id), method: :put) do |form| %>
+    <%= form.label :first_name%>
+    <%= form.text_field :first_name %>
+  
+    <%= form.label :last_name%>
+    <%= form.text_field :last_name %>
+  
+    <%= form.label :user_type%>
+    <%= form.select :user_type, %i[recruiter freelancer]%>
+  
+    <%= form.label :experience%>
+    <%= form.number_field :experience%>
+
+    <%= form.label :hourly_rate%>
+    <%= form.number_field :hourly_rate%>
+
+    <%= form.label :skills%>
+    <%= form.text_field :skills%>
+
+    <%= form.label :feature%>
+    <%= form.check_box :feature%>
+    
+    <%= form.submit "Update" %>
+   <% end %>

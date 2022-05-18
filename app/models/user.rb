@@ -5,4 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile, dependent: :destroy
+  
+
+  after_create :create_profile
+
+
+  private
+
+  def create_profile
+    Profile.create(user_id: self.id)
+  end
 end
