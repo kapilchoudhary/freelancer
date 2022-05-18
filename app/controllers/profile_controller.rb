@@ -1,5 +1,7 @@
 class ProfileController < ApplicationController
 
+  before_action :require_login
+
   def show
     @profile = user_find(params[:id])
   end
@@ -10,7 +12,6 @@ class ProfileController < ApplicationController
 
   def update
     @user = user_find(params[:id])
-    binding.pry
     @user.profile.update(user_params)
     if @user.save
       redirect_to root_path
@@ -22,8 +23,7 @@ class ProfileController < ApplicationController
   private
 
   def user_params
-    binding.pry
-    params.require(:user).permit(:first_name, :last_name, :user_type, :experience, :hourly_rate, :skills)
+    params.require(:user).permit(:first_name, :last_name, :user_type, :experience, :hourly_rate, :skills, :feature)
   end
 
   def user_find(id)

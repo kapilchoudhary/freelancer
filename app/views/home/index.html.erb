@@ -1,4 +1,21 @@
-<h3>Index</h3>
 <%if user_signed_in?%>
-    <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+  <%= button_to "logout", destroy_user_session_path, method: :delete  %>
 <%end%>
+
+<h3>Freelancers List</h3>
+
+  <% if notice.present? %>
+    <p><%= notice %></p>
+  <% end %>
+
+  <% @freelancer.each do |free|%>
+    <%= free.full_name %>
+  <% end %>
+
+  <% if @pagy.prev %>
+    <%= link_to "< Previous page", root_path(page: @pagy.prev), class: "rounded py-3 px-5 bg-gray-600 text-white block hover:bg-gray-800" %>
+  <% end %>
+
+  <% if @pagy.next %>
+    <%= link_to "Next page >", root_path(page: @pagy.next), class: "rounded py-3 px-5 bg-gray-600 text-white block hover:bg-gray-800" %>
+  <% end %>
