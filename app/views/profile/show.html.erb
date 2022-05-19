@@ -4,9 +4,15 @@
       <div class="p-6 mt-3">
         <h5 class="text-gray-900 text-xl font-medium mb-2"><%= @profile.full_name %></h5>
         <p class="text-gray-700 text-base mb-4">
-          Some quick example text to build on the card title and make up the bulk of the card's
-          content.
+          Experience = <span><%= @profile.experience%></span>
         </p>
+        <p class="text-gray-700 text-base mb-4">
+          Hourly Rate = <span><%= @profile.hourly_rate%></span>
+        </p> 
+        <p class="text-gray-700 text-base mb-4">
+        Skills =  <span><%= @profile.skills%></span>
+        </p>
+
         <% if user_signed_in? %>
         <%= link_to "Edit Profile", profile_edit_path, class: "text-blue-600"%>
         <% end %>

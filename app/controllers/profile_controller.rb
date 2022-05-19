@@ -21,6 +21,6 @@ class ProfileController < ApplicationController
 
   def user_params
     params.require(:profile).permit(:first_name, :last_name, :user_type, :experience,
-                                 :hourly_rate, :skills, :feature)
+                                 :hourly_rate, :skills, :feature, :description)
   end
 end
