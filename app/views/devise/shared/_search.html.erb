@@ -1,3 +1,10 @@
 <p>Filter By Price</p>
-<input type="number" name="min_value" value = "5" class= "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" /> To
-<input type="number" name="max_value" value = "100" class= "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+<%= form_with(url: freelancer_filter_path, method: :post, data: { controller: "search", filters_target: "filter", turbo_frame: "freelancer"}) do |f|%>
+  <%= f.label :min_value %>
+  <%= f.text_field :min_value, value: params[:start], class: "block text-gray-700 text-sm font-bold mb-2" %>
+
+  <%= f.label :max_value %>
+  <%= f.text_field :max_value, value: params[:end], class: "block text-gray-700 text-sm font-bold mb-2" %>
+  
+  <%= f.button "Search", class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" %>
+<% end %>
