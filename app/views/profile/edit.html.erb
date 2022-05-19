@@ -1,27 +1,34 @@
-<h3> Hello <%= @profile.email%> </h3>
-<h6> Please Update your Profile </h6>
+<h2 class="text-center mt-6 font-medium text-2xl">Please Update your Profile</h2>
 
-<%= form_with(model: @profile, url: profile_update_path(@profile.id), method: :put) do |form| %>
-    <%= form.label :first_name%>
-    <%= form.text_field :first_name %>
-  
-    <%= form.label :last_name%>
-    <%= form.text_field :last_name %>
-  
-    <%= form.label :user_type%>
-    <%= form.select :user_type, %i[recruiter freelancer]%>
-  
-    <%= form.label :experience%>
-    <%= form.number_field :experience%>
-
-    <%= form.label :hourly_rate%>
-    <%= form.number_field :hourly_rate%>
-
-    <%= form.label :skills%>
-    <%= form.text_field :skills%>
-
-    <%= form.label :feature%>
-    <%= form.check_box :feature%>
+<div class="grid grid-cols-6 gap-4">
+  <div class="col-start-2 col-span-4">
+    <%= form_with(model: @profile, url: profile_update_path(@profile.id), method: :put, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |form| %>
+      <%= form.label :first_name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :first_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
     
-    <%= form.submit "Update" %>
-   <% end %>
+      <%= form.label :last_name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :last_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
+    
+      <%= form.label :user_type, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.select :user_type, %i[recruiter freelancer]%>
+    
+      <%= form.label :experience, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.number_field :experience, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
+
+      <%= form.label :hourly_rate, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.number_field :hourly_rate, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
+
+      <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_area :description, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
+
+      <%= form.label :skills, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :skills, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
+
+      <%= form.label :feature, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.check_box :feature%>
+      <br>
+            
+      <%= form.submit "Update", class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" %>
+    <% end %>
+  </div>
+</div>
